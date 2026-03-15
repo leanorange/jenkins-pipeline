@@ -1,0 +1,150 @@
+Started by user alihassan
+Obtained multi-stage-multi-agent/Jenkinsfile from git https://github.com/leanorange/jenkins-pipeline.git
+[Pipeline] Start of Pipeline
+[Pipeline] stage
+[Pipeline] { (Back-end)
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/jenkins-pl
+[Pipeline] {
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/jenkins-pl/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/leanorange/jenkins-pipeline.git # timeout=10
+Fetching upstream changes from https://github.com/leanorange/jenkins-pipeline.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+ > git fetch --tags --force --progress -- https://github.com/leanorange/jenkins-pipeline.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 8b1e3fa52c3a7ea805d672f6ee9eab9310f4fa37 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 8b1e3fa52c3a7ea805d672f6ee9eab9310f4fa37 # timeout=10
+Commit message: "Delete README.md"
+ > git rev-list --no-walk c60458222d7ed553c1fe2ef29640834263a09b8e # timeout=10
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . maven:3.8.1-adoptopenjdk-11
+
+Error: No such object: maven:3.8.1-adoptopenjdk-11
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker pull maven:3.8.1-adoptopenjdk-11
+3.8.1-adoptopenjdk-11: Pulling from library/maven
+16ec32c2132b: Pulling fs layer
+3f63509f5b97: Pulling fs layer
+34d7b43f221b: Pulling fs layer
+a1931e18ae45: Pulling fs layer
+20904a3b2df7: Pulling fs layer
+fb5c0685f15f: Pulling fs layer
+a18abadafb9a: Pulling fs layer
+a1931e18ae45: Waiting
+fb5c0685f15f: Waiting
+a18abadafb9a: Waiting
+20904a3b2df7: Waiting
+3f63509f5b97: Download complete
+16ec32c2132b: Download complete
+20904a3b2df7: Verifying Checksum
+20904a3b2df7: Download complete
+a1931e18ae45: Verifying Checksum
+a1931e18ae45: Download complete
+fb5c0685f15f: Verifying Checksum
+fb5c0685f15f: Download complete
+a18abadafb9a: Verifying Checksum
+a18abadafb9a: Download complete
+16ec32c2132b: Pull complete
+34d7b43f221b: Verifying Checksum
+34d7b43f221b: Download complete
+3f63509f5b97: Pull complete
+34d7b43f221b: Pull complete
+a1931e18ae45: Pull complete
+20904a3b2df7: Pull complete
+fb5c0685f15f: Pull complete
+a18abadafb9a: Pull complete
+Digest: sha256:143ff7942b5ef5a004252405a31fa2813dfa438f08494fad1757029de5f64082
+Status: Downloaded newer image for maven:3.8.1-adoptopenjdk-11
+docker.io/library/maven:3.8.1-adoptopenjdk-11
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins does not seem to be running inside a container
+$ docker run -t -d -u 111:113 -w /var/lib/jenkins/workspace/jenkins-pl -v /var/lib/jenkins/workspace/jenkins-pl:/var/lib/jenkins/workspace/jenkins-pl:rw,z -v /var/lib/jenkins/workspace/jenkins-pl@tmp:/var/lib/jenkins/workspace/jenkins-pl@tmp:rw,z -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** maven:3.8.1-adoptopenjdk-11 cat
+$ docker top d487226c565849c97b3389cea993fdac83f1ab51d2228cdc09215782517d2d64 -eo pid,comm
+[Pipeline] {
+[Pipeline] sh
++ mvn --version
+Apache Maven 3.8.1 (05c21c65bdfed0f71a2f2ada8b84da59348c4c5d)
+Maven home: /usr/share/maven
+Java version: 11.0.11, vendor: AdoptOpenJDK, runtime: /opt/java/openjdk
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "6.17.0-1007-aws", arch: "amd64", family: "unix"
+[Pipeline] }
+$ docker stop --time=1 d487226c565849c97b3389cea993fdac83f1ab51d2228cdc09215782517d2d64
+$ docker rm -f --volumes d487226c565849c97b3389cea993fdac83f1ab51d2228cdc09215782517d2d64
+[Pipeline] // withDockerContainer
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Front-end)
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/jenkins-pl
+[Pipeline] {
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/jenkins-pl/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/leanorange/jenkins-pipeline.git # timeout=10
+Fetching upstream changes from https://github.com/leanorange/jenkins-pipeline.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+ > git fetch --tags --force --progress -- https://github.com/leanorange/jenkins-pipeline.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 8b1e3fa52c3a7ea805d672f6ee9eab9310f4fa37 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 8b1e3fa52c3a7ea805d672f6ee9eab9310f4fa37 # timeout=10
+Commit message: "Delete README.md"
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . node:16-alpine
+.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins does not seem to be running inside a container
+$ docker run -t -d -u 111:113 -w /var/lib/jenkins/workspace/jenkins-pl -v /var/lib/jenkins/workspace/jenkins-pl:/var/lib/jenkins/workspace/jenkins-pl:rw,z -v /var/lib/jenkins/workspace/jenkins-pl@tmp:/var/lib/jenkins/workspace/jenkins-pl@tmp:rw,z -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** node:16-alpine cat
+$ docker top 0da66babd149d9b643b5a4d8c733e49ddad7bc6893ade73a52f8d8cfee2d1a39 -eo pid,comm
+[Pipeline] {
+[Pipeline] sh
++ node --version
+v16.20.2
+[Pipeline] }
+$ docker stop --time=1 0da66babd149d9b643b5a4d8c733e49ddad7bc6893ade73a52f8d8cfee2d1a39
+$ docker rm -f --volumes 0da66babd149d9b643b5a4d8c733e49ddad7bc6893ade73a52f8d8cfee2d1a39
+[Pipeline] // withDockerContainer
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] End of Pipeline
+Finished: SUCCESS
